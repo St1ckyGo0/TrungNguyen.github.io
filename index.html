@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trung Nguyen - Technical Artist</title>
+    <style>
+        :root {
+            --bg-color-light: #f4f4f4;
+            --text-color-light: #333;
+            --header-bg-light: #fff;
+            --header-shadow-light: rgba(0, 0, 0, 0.1);
+            --footer-bg-light: #fff;
+            --footer-shadow-light: rgba(0, 0, 0, 0.1);
+
+            --bg-color-dark: #121212;
+            --text-color-dark: #e0e0e0;
+            --header-bg-dark: #1e1e1e;
+            --header-shadow-dark: rgba(0, 0, 0, 0.5);
+            --footer-bg-dark: #1e1e1e;
+            --footer-shadow-dark: rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color-dark);
+            color: var(--text-color-dark);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--header-bg-dark);
+            box-shadow: 0 2px 4px var(--header-shadow-dark);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+
+        section {
+            padding: 2rem;
+        }
+
+        .content-section {
+            background-color: var(--header-bg-dark);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px var(--header-shadow-dark);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .content-section video {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--footer-bg-dark);
+            box-shadow: 0 -2px 4px var(--footer-shadow-dark);
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .light-mode {
+            --bg-color-dark: var(--bg-color-light);
+            --text-color-dark: var(--text-color-light);
+            --header-bg-dark: var(--header-bg-light);
+            --header-shadow-dark: var(--header-shadow-light);
+            --footer-bg-dark: var(--footer-bg-light);
+            --footer-shadow-dark: var(--footer-shadow-light);
+        }
+
+        .toggle-button {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-mode .toggle-button {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .nav-button {
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-mode .nav-button {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Trung Nguyen</h1>
+    <p>Technical Artist</p>
+</header>
+
+<section id="bio">
+    <h2>About Me</h2>
+    <p>I am Trung Nguyen, a passionate Technical Artist with extensive experience in creating stunning visual effects and optimizing performance for various VR platforms. My skills include Unity, particle systems, and real-time rendering.</p>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <button class="nav-button" onclick="showSection('technical')">Technical</button>
+    <button class="nav-button" onclick="showSection('art')">Art</button>
+
+    <div id="technical" class="content-section hidden">
+        <h3>Technical Skills</h3>
+        <ul>
+            <li>Unity</li>
+            <li>Shader Programming</li>
+            <li>Particle Systems</li>
+            <li>Performance Optimization</li>
+        </ul>
+        <video controls>
+            <source src="https://drive.google.com/uc?export=download&id=1p9rI66jyB3Fc7os7clWYx-NIdq7h0xhz" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div id="art" class="content-section hidden">
+        <h3>Art Skills</h3>
+        <ul>
+            <li>3D Modeling</li>
+            <li>Texturing</li>
+            <li>Lighting</li>
+            <li>Animation</li>
+        </ul>
+    </div>
+</section>
+
+<footer>
+    <p>Contact: trung.nguyen@example.com</p>
+</footer>
+
+<button class="toggle-button" onclick="toggleMode()">Switch to Light Mode</button>
+
+<script>
+    function toggleMode() {
+        document.body.classList.toggle('light-mode');
+        var button = document.querySelector('.toggle-button');
+        if (document.body.classList.contains('light-mode')) {
+            button.textContent = 'Switch to Dark Mode';
+        } else {
+            button.textContent = 'Switch to Light Mode';
+        }
+    }
+
+    function showSection(sectionId) {
+        var sections = document.querySelectorAll('.content-section');
+        sections.forEach(function(section) {
+            section.classList.add('hidden');
+        });
+        document.getElementById(sectionId).classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
